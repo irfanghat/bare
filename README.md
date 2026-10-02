@@ -10,8 +10,6 @@ It is based on **BAR (Binary Adjacency Range)**, a storage model built around a 
 
 ![Architecture](docs/images/architecture.png)
 
-## BAR
-
 **BAR - Binary Adjacency Range** is the underlying storage model.
 
 For each vertex BAR represents its adjacency list as a byte range:
@@ -23,8 +21,6 @@ vertex -> (offset, length)
 This separates the logical graph from its physical representation and makes operations such as **locating a vertex**, **reading its neighbors**, **skipping unrelated vertices**, and **performing random-access reads** possible **without scanning the entire graph**.
 
 BAR is the **model**.
-
-## BARE
 
 **BARE - Binary Adjacency Range Encoding** is a file format designed to persist the BAR model.
 
