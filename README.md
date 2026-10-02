@@ -8,7 +8,7 @@ It is based on **BAR (Binary Adjacency Range)**, a storage model built around a 
 
 > A vertex's adjacency list should be locatable as a contiguous byte range.
 
-![Architecture]()
+![Architecture](docs/images/architecture.png)
 
 ## BAR
 
