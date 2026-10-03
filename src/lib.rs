@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 // --------------------------------------------------------
 // Can a byte-range-oriented graph representation provide an
 // efficient abstraction for both local random access and remote graph access?
