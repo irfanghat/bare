@@ -38,6 +38,9 @@
 // --------------------------------------------------------
 
 pub mod format;
+pub mod reader;
 pub mod writer;
 
-use crate::format::{AdjacencyRange, Header};
+pub use format::{AdjacencyRange, Header};
+pub use reader::BareReader;
+pub use writer::BareWriter;
