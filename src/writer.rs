@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{self, Seek, SeekFrom, Write};
 
-use crate::format::{AdjacencyRange, Header, INDEX_ENTRY_SIZE, MAGIC, VERSION};
+use crate::format::{AdjacencyRange, HEADER_SIZE, Header, INDEX_ENTRY_SIZE, MAGIC, VERSION};
 
 pub struct BareWriter {
     file: File,
@@ -55,7 +55,7 @@ impl BareWriter {
             self.file.write_all(&range.length.to_le_bytes())?;
         }
 
-        let data_offset = 32;
+        let data_offset = HEADER_SIZE;
 
         let header = Header {
             version: VERSION,

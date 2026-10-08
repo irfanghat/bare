@@ -27,6 +27,27 @@ impl BareReader {
         let index_offset = read_u64(&mut file)?;
         let data_offset = read_u64(&mut file)?;
 
+        if version != crate::format::VERSION {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                format!("unsupported BARE version: {version}"),
+            ));
+        }
+
+        if index_offset < crate::format::HEADER_SIZE {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "invalid index offset",
+            ));
+        }
+
+        if data_offset < crate::format::HEADER_SIZE {
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidData,
+                "invalid data offset",
+            ));
+        }
+
         Ok(Self {
             file,
             header: Header {

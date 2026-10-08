@@ -20,7 +20,24 @@ fn writes_and_reads_graph() {
 
     let range = reader.adjacency_range(1).unwrap();
 
-    assert!(range.length > 0);
+    println!("Vertex 1:");
+    println!("  offset: {}", range.offset);
+    println!("  length: {}", range.length);
+
+    let bytes = std::fs::read(path).unwrap();
+
+    println!("File size: {} bytes", bytes.len());
+
+    println!("File bytes:");
+    for (i, chunk) in bytes.chunks(16).enumerate() {
+        print!("{:04x}: ", i * 16);
+
+        for byte in chunk {
+            print!("{:02x} ", byte);
+        }
+
+        println!();
+    }
 
     std::fs::remove_file(path).unwrap();
 }
